@@ -1,4 +1,4 @@
-# ResumeFlow 🧭
+# ResumeFlow 📃
 
 A full-stack resume builder I built during my internship — users can create resumes from templates, track job applications on a kanban board, and share resumes with recruiters via public links.
 
