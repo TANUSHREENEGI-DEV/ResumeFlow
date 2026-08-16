@@ -160,4 +160,4 @@ App runs at `http://localhost:4200`.
 
 ---
 
-~tanushree🪼
+~**Tanushree**🪼
