@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+<section class="profile-card">
+  @if (user()) {
+    <h2>{{ user().name }}</h2>
+    <p>{{ user().email }}</p>
+    <button (click)="onLogout()" class="logout-btn">Logout</button>
+  } @else if (errorMsg()) {
+    <p style="color: red;">{{ errorMsg() }}</p>
+  } @else {
+    <p>Loading profile...</p>
+  }
+</section>

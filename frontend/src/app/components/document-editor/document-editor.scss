@@ -1,0 +1,355 @@
+$primary: #14b8a6;
+$primary-light: #3b82f6;
+$bg-dark: #1a1a1a;
+$card-bg: #232323;
+$text-light: #f0f0f0;
+$text-muted: #999;
+$border-color: #3a3a3a;
+$error-color: #ff4d4d;
+$delete-color: #ff4d4d;
+
+@mixin button($bg) {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  background: $bg;
+  color: #ffffff;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.editor-page {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.error-msg {
+  color: $error-color;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  h1 {
+    color: $text-light;
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .subtitle {
+    color: $text-muted;
+    font-size: 13px;
+    margin: 2px 0 0 0;
+  }
+
+  hgroup {
+    flex: 1;
+  }
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: $text-light;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-secondary {
+  @include button($card-bg);
+  border: 1px solid $border-color;
+}
+
+.btn-primary {
+  @include button(linear-gradient(90deg, $primary, $primary-light));
+}
+
+.tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 20px;
+
+  .tab {
+    color: $text-muted;
+    font-size: 14px;
+    padding: 10px 0;
+    cursor: pointer;
+
+    &.active {
+      color: $primary;
+      border-bottom: 2px solid $primary;
+      font-weight: 600;
+    }
+  }
+}
+
+.editor-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  align-items: start;
+}
+
+.editor-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add-section-form {
+  display: flex;
+  gap: 8px;
+
+  input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background: $card-bg;
+    color: $text-light;
+    font-size: 14px;
+  }
+
+  button {
+    @include button($primary);
+    width: 40px;
+    font-size: 16px;
+  }
+}
+
+.section-card {
+  background: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.section-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.section-heading-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  background: $bg-dark;
+  color: $text-light;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: $delete-color;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+}
+
+.bullet-list {
+  list-style: none;
+  margin: 0 0 10px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bullet-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  textarea {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    background: $bg-dark;
+    color: $text-light;
+    font-size: 13px;
+    min-height: 40px;
+    resize: vertical;
+  }
+}
+
+.add-bullet-btn {
+  background: none;
+  border: none;
+  color: $primary;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.preview-panel {
+  position: sticky;
+  top: 24px;
+}
+
+.resume-preview {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 28px;
+  color: #111111;
+
+  h2 {
+    font-size: 22px;
+    margin: 0 0 16px 0;
+  }
+}
+
+.preview-section {
+  margin-bottom: 16px;
+
+  h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #333333;
+    border-bottom: 2px solid $primary;
+    padding-bottom: 4px;
+    margin: 0 0 8px 0;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 18px;
+
+    li {
+      font-size: 13px;
+      color: #333333;
+      margin-bottom: 4px;
+    }
+  }
+}
+.tabs .tab {
+  cursor: pointer;
+}
+
+.sharing-panel {
+  max-width: 600px;
+}
+
+.empty-shares {
+  color: $text-muted;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.share-list {
+  list-style: none;
+  margin: 16px 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.share-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 12px 16px;
+
+  code {
+    color: $primary-light;
+    font-size: 13px;
+  }
+
+  .revoke-btn {
+    background: none;
+    border: 1px solid $delete-color;
+    color: $delete-color;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+      background: $delete-color;
+      color: #ffffff;
+    }
+  }
+}
+.toast {
+  background: $card-bg;
+  border: 1px solid $primary;
+  color: $text-light;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.versions-panel {
+  max-width: 600px;
+}
+
+.version-list {
+  list-style: none;
+  margin: 16px 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.version-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: $text-light;
+  font-size: 13px;
+}
+@media print {
+  app-navbar,
+  app-footer,
+  .editor-header,
+  .tabs,
+  .toast,
+  .editor-panel {
+    display: none !important;
+  }
+
+  .editor-layout {
+    display: block !important;
+  }
+
+  .preview-panel {
+    position: static !important;
+  }
+
+  .resume-preview {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+}

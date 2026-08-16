@@ -1,0 +1,113 @@
+$primary: #14b8a6;
+$primary-light: #3b82f6;
+$bg-dark: #1a1a1a;
+$card-bg: #232323;
+$text-light: #f0f0f0;
+$text-muted: #999;
+$border-color: #3a3a3a;
+$error-color: #ff4d4d;
+
+@mixin button($bg) {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  background: $bg;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.auth-card {
+  max-width: 380px;
+  margin: 40px auto;
+  padding: 32px;
+  background: $card-bg;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.auth-title {
+  color: $text-light;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.auth-subtitle {
+  color: $text-muted;
+  font-size: 14px;
+  margin: 0 0 24px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    color: $text-light;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  input {
+    padding: 11px 14px;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background: $bg-dark;
+    color: $text-light;
+    font-size: 14px;
+
+    &::placeholder {
+      color: $text-muted;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+    }
+  }
+}
+
+.auth-btn {
+  @include button(linear-gradient(90deg, $primary, $primary-light));
+  margin-top: 4px;
+}
+
+.error-msg {
+  color: $error-color;
+  font-size: 13px;
+  margin: 0;
+  text-align: center;
+}
+
+.auth-footer {
+  text-align: center;
+  color: $text-muted;
+  font-size: 13px;
+  margin: 20px 0 0 0;
+
+  a {
+    color: $primary-light;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

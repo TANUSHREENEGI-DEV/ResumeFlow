@@ -1,0 +1,74 @@
+$primary: #14b8a6;
+$primary-light: #3b82f6;
+$card-bg: #232323;
+$text-light: #f0f0f0;
+$text-muted: #999;
+$border-color: #3a3a3a;
+
+.faq-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.faq-header {
+  margin-bottom: 24px;
+
+  h1 {
+    color: $text-light;
+    font-size: 26px;
+    margin: 0 0 6px 0;
+  }
+
+  .subtitle {
+    color: $text-muted;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  background: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 4px 18px;
+
+  summary {
+    color: $text-light;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 0;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: '+';
+      color: $primary;
+      font-weight: 700;
+      margin-right: 10px;
+      display: inline-block;
+      width: 14px;
+    }
+  }
+
+  &[open] summary::before {
+    content: '−';
+  }
+
+  p {
+    color: $text-muted;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 16px 24px;
+  }
+}

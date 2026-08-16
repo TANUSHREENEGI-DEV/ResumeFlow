@@ -1,0 +1,65 @@
+$primary: #14b8a6;
+$primary-light: #3b82f6;
+$card-bg: #232323;
+$text-light: #f0f0f0;
+$text-muted: #999;
+$border-color: #3a3a3a;
+
+.site-footer {
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 24px;
+  border-top: 1px solid $border-color;
+}
+
+.footer-brand {
+  .logo {
+    font-weight: 700;
+    font-size: 16px;
+    background: linear-gradient(90deg, $primary, $primary-light);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  p {
+    color: $text-muted;
+    font-size: 13px;
+    margin: 8px 0 0 0;
+  }
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  h3 {
+    color: $text-light;
+    font-size: 13px;
+    margin: 0 0 4px 0;
+  }
+
+  a {
+    color: $text-muted;
+    text-decoration: none;
+    font-size: 13px;
+
+    &:hover {
+      color: $text-light;
+    }
+  }
+}
+
+.copyright {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: $text-muted;
+  font-size: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid $border-color;
+}

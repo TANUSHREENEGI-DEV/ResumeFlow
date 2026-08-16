@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+
+<main class="dashboard">
+  <header class="dashboard-header">
+    <hgroup>
+      <h1><span class="gradient-text">Hi {{ userName() }}</span> 🪼</h1>
+      <p class="subtitle">Here is where everything stands today.</p>
+    </hgroup>
+    <nav class="header-actions">
+      <button class="btn-secondary">Track an application</button>
+      <a routerLink="/templates" class="btn-primary">+ New resume</a>
+    </nav>
+  </header>
+
+  @if (loading()) {
+    <p>Loading dashboard...</p>
+  } @else if (errorMsg()) {
+    <p class="error-msg">{{ errorMsg() }}</p>
+  } @else {
+    <section class="counters">
+      <article class="counter-card">
+        <strong class="counter-value">{{ documentsCount() }}</strong>
+        <span class="counter-label">Documents</span>
+      </article>
+      <article class="counter-card">
+        <strong class="counter-value">{{ applicationsCount() }}</strong>
+        <span class="counter-label">Applications</span>
+      </article>
+      <article class="counter-card">
+        <strong class="counter-value">{{ savedVersionsCount() }}</strong>
+        <span class="counter-label">Saved versions</span>
+      </article>
+      <article class="counter-card">
+        <strong class="counter-value">{{ exportsCount() }}</strong>
+        <span class="counter-label">Exports</span>
+      </article>
+    </section>
+
+    <section class="panels">
+      <article class="panel">
+        <header class="panel-header">
+          <h2>Recent documents</h2>
+          <a routerLink="/documents">View all &gt;</a>
+        </header>
+        @if (recentDocuments().length === 0) {
+          <p class="empty-panel">No documents yet.</p>
+        } @else {
+          <ul class="recent-doc-list">
+            @for (doc of recentDocuments(); track doc.id) {
+              <li>
+                <span class="doc-icon">📄</span>
+                <p class="doc-info">
+                  <strong>{{ doc.title }}</strong>
+                  <em class="doc-meta">{{ doc.type }} · updated {{ doc.updatedAt | date: 'mediumDate' }}</em>
+                </p>
+              </li>
+            }
+          </ul>
+        }
+      </article>
+
+      <article class="panel">
+        <header class="panel-header">
+          <h2>Application pipeline</h2>
+          <a routerLink="/applications">Manage &gt;</a>
+        </header>
+        @if (applicationsCount() === 0) {
+          <p class="empty-panel">No applications yet.</p>
+        } @else {
+          <ul class="pipeline-list">
+            @for (stage of pipeline(); track stage.status) {
+              <li>
+                <span class="stage-dot" [class]="'dot-' + stage.status"></span>
+                <span class="stage-label">{{ statusLabels[stage.status] }}</span>
+                <span class="stage-bar-track">
+                  <span class="stage-bar-fill" [class]="'fill-' + stage.status" [style.width.%]="applicationsCount() ? (stage.count / applicationsCount() * 100) : 0"></span>
+                </span>
+                <span class="stage-count">{{ stage.count }}</span>
+              </li>
+            }
+          </ul>
+        }
+      </article>
+    </section>
+  }
+</main>
+
+<app-footer></app-footer>

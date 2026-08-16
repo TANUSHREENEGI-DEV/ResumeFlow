@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+
+<main class="applications">
+  <header class="applications-header">
+    <hgroup>
+      <h1>Applications</h1>
+      <p class="subtitle">Drag a card between columns to move it along your pipeline.</p>
+    </hgroup>
+    <nav class="header-actions">
+      <div class="view-toggle">
+        <button [class.active]="view() === 'board'" (click)="setView('board')">Board</button>
+        <button [class.active]="view() === 'table'" (click)="setView('table')">Table</button>
+      </div>
+      <button class="btn-primary" (click)="openForm()">+ Track application</button>
+    </nav>
+  </header>
+
+  @if (toastMsg()) {
+    <p class="toast">{{ toastMsg() }}</p>
+  }
+
+  @if (loading()) {
+    <p>Loading applications...</p>
+  } @else if (errorMsg()) {
+    <p class="error-msg">{{ errorMsg() }}</p>
+  } @else if (view() === 'board') {
+    <section class="board">
+      @for (status of statuses; track status) {
+        <section
+          class="column"
+          (dragover)="$event.preventDefault()"
+          (drop)="onDrop(status)"
+        >
+          <header class="column-header">
+            <span class="status-dot" [class]="'dot-' + status"></span>
+            <h2>{{ statusLabels[status] }}</h2>
+            <span class="count">{{ getAppsForStatus(status).length }}</span>
+          </header>
+
+          @for (app of getAppsForStatus(status); track app.id) {
+            <article
+              class="app-card"
+              draggable="true"
+              (dragstart)="onDragStart(app.id)"
+            >
+              <h3>{{ app.company }}</h3>
+              <p>{{ app.role }}</p>
+              <p class="app-date">{{ app.appliedDate | date: 'mediumDate' }}</p>
+            </article>
+          }
+        </section>
+      }
+    </section>
+  } @else {
+    <table class="applications-table">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (app of allApplications(); track app.id) {
+          <tr>
+            <td>{{ app.company }}</td>
+            <td>{{ app.role }}</td>
+            <td><span class="chip">{{ statusLabels[app.status] }}</span></td>
+            <td>{{ app.appliedDate | date: 'mediumDate' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+
+  @if (showForm()) {
+    <dialog open class="app-form-dialog">
+      <form (submit)="$event.preventDefault(); submitForm()">
+        <h2>Track an application</h2>
+        <fieldset>
+          <label for="company">Company</label>
+          <input id="company" type="text" [(ngModel)]="newCompany" name="company" placeholder="e.g. Google" required />
+        </fieldset>
+        <fieldset>
+          <label for="role">Role</label>
+          <input id="role" type="text" [(ngModel)]="newRole" name="role" placeholder="e.g. Frontend Engineer" required />
+        </fieldset>
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" (click)="closeForm()">Cancel</button>
+          <button type="submit" class="btn-primary">Add application</button>
+        </div>
+      </form>
+    </dialog>
+  }
+</main>
+<app-footer></app-footer>

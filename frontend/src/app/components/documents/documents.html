@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+
+<main class="documents">
+  <header class="documents-header">
+    <h1>Documents</h1>
+    <button class="btn-primary" (click)="createDocument()">+ New document</button>
+  </header>
+
+  @if (allDocuments().length > 0 || searchTerm() || typeFilter() !== 'all') {
+    <search class="filter-row">
+      <input
+        type="text"
+        placeholder="Search by title"
+        [(ngModel)]="searchTerm"
+      />
+      <select [(ngModel)]="typeFilter">
+        <option value="all">All types</option>
+        <option value="resume">Resume</option>
+        <option value="cv">CV</option>
+        <option value="cover-letter">Cover letter</option>
+      </select>
+    </search>
+  }
+
+  @if (loading()) {
+    <p>Loading documents...</p>
+  } @else if (errorMsg()) {
+    <p class="error-msg">{{ errorMsg() }}</p>
+  } @else if (filteredDocuments().length === 0) {
+    <section class="empty-state">
+      <h2>No documents yet</h2>
+      <p>Get started by creating your first document.</p>
+      <button class="btn-primary" (click)="createDocument()">Create your first document</button>
+    </section>
+  } @else {
+    <section class="documents-grid">
+      @for (doc of filteredDocuments(); track doc.id) {
+        <article class="document-card" (click)="openDocument(doc.id)">
+          <header class="card-top">
+            <span class="doc-icon">📄</span>
+            <button class="kebab-btn" (click)="toggleMenu(doc.id); $event.stopPropagation()">⋮</button>
+            @if (openMenuId() === doc.id) {
+              <ul class="kebab-menu">
+                <li><button (click)="$event.stopPropagation(); openDocument(doc.id)">Open editor</button></li>
+                <li><button (click)="$event.stopPropagation()">Settings</button></li>
+                <li><button (click)="$event.stopPropagation(); duplicateDocument(doc.id)">Duplicate</button></li>
+                <li class="divider"></li>
+                <li><button class="delete-item" (click)="$event.stopPropagation(); deleteDocument(doc.id)">Delete</button></li>
+              </ul>
+            }
+          </header>
+          <h2>{{ doc.title }}</h2>
+          <ul class="chips">
+            <li class="chip">{{ doc.type }}</li>
+            @if (doc.templateId) {
+              <li class="chip">{{ doc.templateId }}</li>
+            }
+          </ul>
+          <p class="updated-date">Updated {{ doc.updatedAt | date: 'medium' }}</p>
+        </article>
+      }
+    </section>
+  }
+</main>
+<app-footer></app-footer>

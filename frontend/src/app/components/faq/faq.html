@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+
+<main class="faq-page">
+  <header class="faq-header">
+    <h1>Frequently asked questions</h1>
+    <p class="subtitle">Everything you need to know about using ResumeFlow.</p>
+  </header>
+
+  <section class="faq-list">
+    @for (item of faqs; track item.question) {
+      <details class="faq-item">
+        <summary>{{ item.question }}</summary>
+        <p>{{ item.answer }}</p>
+      </details>
+    }
+  </section>
+</main>
+
+<app-footer></app-footer>

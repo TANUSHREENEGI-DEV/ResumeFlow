@@ -1,0 +1,29 @@
+<section class="auth-card">
+  <h2 class="auth-title">Create Account</h2>
+  <p class="auth-subtitle">Sign up to get started with ResumeFlow</p>
+
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" placeholder="Your full name" />
+    </fieldset>
+
+    <fieldset>
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" placeholder="you@example.com" />
+    </fieldset>
+
+    <fieldset>
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" placeholder="At least 6 characters" />
+    </fieldset>
+
+    <button type="submit" class="auth-btn" [disabled]="signupForm.invalid">Sign Up</button>
+
+    @if (error) {
+      <p class="error-msg">{{ error }}</p>
+    }
+  </form>
+
+  <p class="auth-footer">Already have an account? <a routerLink="/login">Login</a></p>
+</section>

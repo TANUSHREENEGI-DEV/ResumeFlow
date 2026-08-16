@@ -1,0 +1,312 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "Tanushree Negi",
+      "email": "tanushree@example.com",
+      "password": "seedpassword123",
+      "tier": "free",
+      "aiCredits": 5,
+      "createdAt": "2026-07-01T00:00:00.000Z"
+    },
+    {
+      "id": "u_ms5exx7jzmllf",
+      "tier": "free",
+      "aiCredits": 5,
+      "createdAt": "2026-07-29T01:35:43.711Z",
+      "name": "Tanushree Negi",
+      "email": "test123@gmail.com",
+      "password": "$2b$10$Rx4T10CaVB4/sjR5qKPRceYiBiM7Rat2hFDymsePFJ70IWcp6uFCu"
+    },
+    {
+      "id": "u_ms8724k7mtitv",
+      "tier": "free",
+      "aiCredits": 5,
+      "createdAt": "2026-07-31T00:18:21.481Z",
+      "name": "Test User",
+      "email": "jwt-test@gmail.com",
+      "password": "$2b$10$tz6tb6LDB27cUPRfo256QuVkBcCKRR5..vWtg35MHEOVsvBNJLnDy"
+    },
+    {
+      "id": "u_ms879czsxwfs5",
+      "tier": "free",
+      "aiCredits": 5,
+      "createdAt": "2026-07-31T00:23:58.984Z",
+      "name": "Test User",
+      "email": "jwt-test2@gmail.com",
+      "password": "$2b$10$6vnwuQDaDVn91T.lT4uVnuOKtsG/MU.Fdp4BUhH5bWeBLUvOZFkea"
+    },
+    {
+      "id": "u_mspbc91326wkr",
+      "tier": "free",
+      "aiCredits": 5,
+      "createdAt": "2026-08-11T23:50:17.271Z",
+      "name": "Tanu Test",
+      "email": "tanutest@example.com",
+      "password": "$2b$10$qs4GoGfTf76qexBskqBHyuy0l7KEmzuyuxPnDpcx2wLiWRw6vs41G",
+      "resetToken": "reset_msr0te3xwro8b"
+    },
+    {
+      "id": "u_mspfzky5b1x61",
+      "tier": "free",
+      "aiCredits": 5,
+      "createdAt": "2026-08-12T02:00:24.269Z",
+      "name": "Tanushree",
+      "email": "tanushree3838@gmail.com",
+      "password": "$2b$10$/mje4BtTwYS3OL31kKfY0./ykqDpaRHah8ml.9zFs5sraQCzfGwj6"
+    },
+    {
+      "id": "u_mssxxie7twzx0",
+      "tier": "free",
+      "aiCredits": 5,
+      "createdAt": "2026-08-14T12:45:59.263Z",
+      "name": "Test User",
+      "email": "test@resumeflow.com",
+      "password": "$2b$10$N/lb0ZvcbPitiM4a0qrzYOqsMo/bOGNFSLCGEP/V8tXQfCX9icEQq"
+    },
+    {
+      "id": "u_mssyeov4vq6u8",
+      "tier": "free",
+      "aiCredits": 5,
+      "createdAt": "2026-08-14T12:59:20.800Z",
+      "name": "Tanushree Negi",
+      "email": "tanushreenegi1@gmail.com",
+      "password": "$2b$10$Oq9Wx8yUXtxiY.fuI8CQK.R7pwOvM531TAPABrOpdNi6ugHPxxMJu"
+    },
+    {
+      "id": "u_msvcdtl627u3g",
+      "tier": "free",
+      "aiCredits": 5,
+      "createdAt": "2026-08-16T05:06:07.242Z",
+      "name": "Test QA",
+      "email": "qatest1@example.com",
+      "password": "$2b$10$xo4st4bjNaOenAqmM6ykjehJFRIiixxyjwFWjP.2aftFQk1fcFnpi"
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc1",
+      "userId": "u1",
+      "title": "My First Resume",
+      "type": "resume",
+      "templateId": "tpl1",
+      "sections": [
+        {
+          "id": "sec1",
+          "type": "experience",
+          "title": "Experience",
+          "order": 1,
+          "items": [
+            {
+              "id": "item1",
+              "role": "Full Stack Intern",
+              "company": "Shorter Loop",
+              "description": "Built REST APIs with Express and Node.js"
+            }
+          ]
+        }
+      ],
+      "versions": [],
+      "createdAt": "2026-07-01T00:00:00.000Z",
+      "updatedAt": "2026-07-01T00:00:00.000Z"
+    },
+    {
+      "id": "doc_mst9pnzdv7j1x",
+      "sections": [],
+      "versions": [],
+      "createdAt": "2026-08-14T18:15:48.649Z",
+      "updatedAt": "2026-08-14T18:15:48.649Z",
+      "userId": "u_mssxxie7twzx0",
+      "title": "Test Doc 1",
+      "type": "resume",
+      "templateId": null
+    },
+    {
+      "id": "doc_mst9puez50jqk",
+      "sections": [],
+      "versions": [],
+      "createdAt": "2026-08-14T18:15:56.987Z",
+      "updatedAt": "2026-08-14T18:15:56.987Z",
+      "userId": "u_mssxxie7twzx0",
+      "title": "Test Doc 2",
+      "type": "resume",
+      "templateId": null
+    },
+    {
+      "id": "doc_mst9qdlcbqpm8",
+      "sections": [],
+      "versions": [],
+      "createdAt": "2026-08-14T18:16:21.840Z",
+      "updatedAt": "2026-08-14T18:16:21.840Z",
+      "userId": "u_mssxxie7twzx0",
+      "title": "Test Doc 3",
+      "type": "resume",
+      "templateId": null
+    },
+    {
+      "id": "doc_msuqyhz45enop",
+      "sections": [
+        {
+          "id": "sec_msuqztkku4sz1",
+          "items": [
+            {
+              "id": "item_msur0ccmiw1zc",
+              "text": "New bullet point"
+            }
+          ],
+          "order": 1,
+          "type": "custom",
+          "title": "skills"
+        }
+      ],
+      "versions": [
+        {
+          "id": "ver_msusefn1a18ga",
+          "createdAt": "2026-08-15T19:46:43.501Z",
+          "snapshot": [
+            {
+              "id": "sec_msuqztkku4sz1",
+              "items": [
+                {
+                  "id": "item_msur0ccmiw1zc",
+                  "text": "New bullet point"
+                }
+              ],
+              "order": 1,
+              "type": "custom",
+              "title": "skills"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-08-15T19:06:20.415Z",
+      "updatedAt": "2026-08-15T19:08:02.848Z",
+      "userId": "u_mssyeov4vq6u8",
+      "title": "Untitled document",
+      "type": "resume",
+      "templateId": null
+    },
+    {
+      "id": "doc_msurgjt5l1nna",
+      "sections": [],
+      "versions": [],
+      "createdAt": "2026-08-15T19:20:22.600Z",
+      "updatedAt": "2026-08-15T19:20:22.600Z",
+      "userId": "u_mssyeov4vq6u8",
+      "title": "Untitled document",
+      "type": "resume",
+      "templateId": null
+    }
+  ],
+  "templates": [
+    {
+      "id": "tpl1",
+      "name": "Classic",
+      "accent": "#3f51b5",
+      "font": "Georgia",
+      "layout": "simple",
+      "density": "comfortable"
+    },
+    {
+      "id": "tpl2",
+      "name": "Modern",
+      "accent": "#009688",
+      "font": "Roboto",
+      "layout": "simple",
+      "density": "compact"
+    },
+    {
+      "id": "tpl3",
+      "name": "Technical",
+      "accent": "#e64a19",
+      "font": "Roboto Mono",
+      "layout": "sidebar",
+      "density": "compact"
+    },
+    {
+      "id": "tpl4",
+      "name": "test",
+      "accent": "#10d99a",
+      "font": "Roboto",
+      "layout": "sidebar",
+      "density": "comfortable"
+    },
+    {
+      "id": "tpl5",
+      "name": "Sidebar Gold",
+      "accent": "#c8a44d",
+      "font": "Arial",
+      "layout": "sidebar",
+      "density": "comfortable"
+    },
+    {
+      "id": "tpl6",
+      "name": "Sidebar Teal",
+      "accent": "#10a37f",
+      "font": "Arial",
+      "layout": "sidebar",
+      "density": "comfortable"
+    },
+    {
+      "id": "tpl7",
+      "name": "Sidebar Blue",
+      "accent": "#2f6fdb",
+      "font": "Arial",
+      "layout": "sidebar",
+      "density": "comfortable"
+    },
+    {
+      "id": "tpl8",
+      "name": "Simple",
+      "accent": "#333333",
+      "font": "Georgia",
+      "layout": "simple",
+      "density": "comfortable"
+    }
+  ],
+  "shares": [],
+  "exports": [
+    {
+      "id": "share_msus2o0k0kbdd",
+      "createdAt": "2026-08-15T19:37:34.484Z",
+      "userId": "u_mssyeov4vq6u8",
+      "documentId": "doc_msurgjt5l1nna",
+      "documentTitle": "Untitled document",
+      "slug": "untitled-document-msus2o"
+    }
+  ],
+  "applications": [
+    {
+      "id": "app1",
+      "userId": "u1",
+      "company": "Example Corp",
+      "role": "Frontend Developer",
+      "status": "applied",
+      "appliedDate": "2026-07-05T00:00:00.000Z"
+    },
+    {
+      "id": "app_mrl6hlupoqiwb",
+      "userId": "u1",
+      "company": "Microsoft",
+      "role": "Backend Intern",
+      "status": "applied",
+      "appliedDate": "2026-07-14T21:43:42.049Z"
+    },
+    {
+      "id": "app_mrmn7cc2t5qws",
+      "status": "applied",
+      "appliedDate": "2026-07-15T22:19:22.802Z",
+      "userId": "u1",
+      "company": "Microsoft",
+      "role": "Backend Intern"
+    },
+    {
+      "id": "app_msugfgqmk8n7e",
+      "status": "applied",
+      "appliedDate": "2026-08-15T14:11:36.190Z",
+      "userId": "u_mssyeov4vq6u8",
+      "company": "google",
+      "role": "frontend engineer"
+    }
+  ]
+}

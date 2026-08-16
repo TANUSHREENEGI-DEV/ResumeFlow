@@ -1,0 +1,133 @@
+<app-navbar></app-navbar>
+
+<main class="editor-page">
+  @if (loading()) {
+    <p>Loading document...</p>
+  } @else if (errorMsg()) {
+    <p class="error-msg">{{ errorMsg() }}</p>
+  } @else if (document()) {
+    <header class="editor-header">
+      <button class="back-btn" (click)="goBack()">←</button>
+      <hgroup>
+        <h1>{{ document().title }}</h1>
+        <p class="subtitle">{{ document().type }} · updated {{ document().updatedAt | date: 'mediumDate' }}</p>
+      </hgroup>
+      <nav class="header-actions">
+  <button class="btn-secondary">Settings</button>
+  <button class="btn-secondary" (click)="printView()">Print view</button>
+  <button class="btn-primary" (click)="exportDocument()">Export</button>
+</nav>
+    </header>
+
+    @if (toastMsg()) {
+      <p class="toast">{{ toastMsg() }}</p>
+    }
+
+    <nav class="tabs">
+      <span class="tab" [class.active]="activeTab() === 'editor'" (click)="setTab('editor')">Editor</span>
+      <span class="tab" [class.active]="activeTab() === 'versions'" (click)="setTab('versions')">Versions ({{ document().versions.length }})</span>
+      <span class="tab" [class.active]="activeTab() === 'sharing'" (click)="setTab('sharing')">Sharing ({{ documentShares().length }})</span>
+      <span class="tab">Exports</span>
+    </nav>
+
+    @if (activeTab() === 'editor') {
+      <section class="editor-layout">
+        <section class="editor-panel">
+          <form class="add-section-form" (submit)="$event.preventDefault(); addSection()">
+            <input
+              type="text"
+              placeholder="Add a section"
+              [(ngModel)]="newSectionTitle"
+              name="newSectionTitle"
+            />
+            <button type="submit">+</button>
+          </form>
+
+          @for (section of document().sections; track section.id) {
+            <article class="section-card">
+              <header class="section-card-header">
+                <input
+                  type="text"
+                  class="section-heading-input"
+                  [value]="section.title"
+                  (change)="updateSectionTitle(section.id, $any($event.target).value)"
+                />
+                <button class="delete-btn" (click)="deleteSection(section.id)">🗑</button>
+              </header>
+
+              <ul class="bullet-list">
+                @for (item of section.items; track item.id) {
+                  <li class="bullet-row">
+                    <textarea
+                      [value]="item.text"
+                      (change)="updateBullet(section.id, item.id, $any($event.target).value)"
+                    ></textarea>
+                    <button class="delete-btn" (click)="deleteBullet(section.id, item.id)">🗑</button>
+                  </li>
+                }
+              </ul>
+
+              <button class="add-bullet-btn" (click)="addBullet(section.id)">+ Add bullet</button>
+            </article>
+          }
+        </section>
+
+        <aside class="preview-panel">
+          <article class="resume-preview">
+            <h2>{{ document().title }}</h2>
+            @for (section of document().sections; track section.id) {
+              <section class="preview-section">
+                <h3>{{ section.title }}</h3>
+                <ul>
+                  @for (item of section.items; track item.id) {
+                    <li>{{ item.text }}</li>
+                  }
+                </ul>
+              </section>
+            }
+          </article>
+        </aside>
+      </section>
+    } @else if (activeTab() === 'sharing') {
+      <section class="sharing-panel">
+        <button class="btn-primary" (click)="createShareLink()">+ Create share link</button>
+
+        @if (sharesLoading()) {
+          <p>Loading links...</p>
+        } @else if (documentShares().length === 0) {
+          <p class="empty-shares">No public links yet for this document.</p>
+        } @else {
+          <ul class="share-list">
+            @for (share of documentShares(); track share.id) {
+              <li class="share-row">
+                <code>{{ getPublicUrl(share.slug) }}</code>
+                <button class="revoke-btn" (click)="revokeShare(share.id)">Revoke</button>
+              </li>
+            }
+          </ul>
+        }
+      </section>
+    } @else if (activeTab() === 'versions') {
+      <section class="versions-panel">
+        <button class="btn-primary" (click)="saveVersion()">+ Save current version</button>
+
+        @if (versionsLoading()) {
+          <p>Loading versions...</p>
+        } @else if (versions().length === 0) {
+          <p class="empty-shares">No saved versions yet.</p>
+        } @else {
+          <ul class="version-list">
+            @for (version of versions(); track version.id) {
+              <li class="version-row">
+                <span>Saved {{ version.createdAt | date: 'medium' }}</span>
+                <button class="btn-secondary" (click)="restoreVersion(version.id)">Restore</button>
+              </li>
+            }
+          </ul>
+        }
+      </section>
+    }
+  }
+</main>
+
+<app-footer></app-footer>

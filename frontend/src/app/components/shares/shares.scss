@@ -1,0 +1,151 @@
+$primary: #14b8a6;
+$primary-light: #3b82f6;
+$bg-dark: #1a1a1a;
+$card-bg: #232323;
+$text-light: #f0f0f0;
+$text-muted: #999;
+$border-color: #3a3a3a;
+$error-color: #ff4d4d;
+$revoke-color: #ff4d4d;
+
+@mixin button($bg) {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  background: $bg;
+  color: #ffffff;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.shares {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.shares-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+
+  h1 {
+    color: $text-light;
+    font-size: 26px;
+    margin: 0;
+  }
+}
+
+.btn-secondary {
+  @include button($card-bg);
+  border: 1px solid $border-color;
+}
+
+.subtitle {
+  color: $text-muted;
+  font-size: 14px;
+  margin: 0 0 24px 0;
+}
+
+.error-msg {
+  color: $error-color;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: $card-bg;
+  border: 1px dashed $border-color;
+  border-radius: 12px;
+
+  h2 {
+    color: $text-light;
+    font-size: 18px;
+    margin: 0 0 8px 0;
+  }
+
+  p {
+    color: $text-muted;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.shares-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.share-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.link-icon {
+  font-size: 18px;
+}
+
+.share-info {
+  flex: 1;
+
+  h2 {
+    color: $text-light;
+    font-size: 15px;
+    margin: 0 0 4px 0;
+  }
+
+  .share-url {
+    color: $primary-light;
+    font-size: 12px;
+    display: block;
+  }
+
+  .created-date {
+    color: $text-muted;
+    font-size: 12px;
+    margin: 4px 0 0 0;
+  }
+}
+
+.share-actions {
+  display: flex;
+  gap: 6px;
+
+  button,
+  a {
+    background: $bg-dark;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+
+    &:hover {
+      background: $border-color;
+    }
+  }
+
+  .revoke-btn {
+    color: $revoke-color;
+  }
+}

@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+
+<main class="shares">
+  <header class="shares-header">
+    <h1>Shared links</h1>
+    <button class="btn-secondary" (click)="goToDocuments()">Go to documents</button>
+  </header>
+  <p class="subtitle">Every public link you have handed out, in one place.</p>
+
+  @if (loading()) {
+    <p>Loading shared links...</p>
+  } @else if (errorMsg()) {
+    <p class="error-msg">{{ errorMsg() }}</p>
+  } @else if (shares().length === 0) {
+    <section class="empty-state">
+      <h2>Nothing shared yet</h2>
+      <p>Open a document and create a public link to share it with a recruiter.</p>
+    </section>
+  } @else {
+    <ul class="shares-list">
+      @for (share of shares(); track share.id) {
+        <li class="share-row">
+          <span class="link-icon">🔗</span>
+          <section class="share-info">
+            <h2>{{ share.documentTitle }}</h2>
+            <code class="share-url">{{ getPublicUrl(share.slug) }}</code>
+            <p class="created-date">Created {{ share.createdAt | date: 'medium' }}</p>
+          </section>
+          <nav class="share-actions">
+            <button (click)="copyLink(share.slug)" title="Copy link">📋</button>
+            <a [href]="getPublicUrl(share.slug)" target="_blank" title="Open shared view">↗</a>
+            <button title="Print view">🖨</button>
+            <button class="revoke-btn" (click)="revoke(share.id)" title="Revoke">🚫</button>
+          </nav>
+        </li>
+      }
+    </ul>
+  }
+</main>
+
+<app-footer></app-footer>

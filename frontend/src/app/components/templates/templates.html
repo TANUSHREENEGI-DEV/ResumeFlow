@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<main class="templates">
+  <header class="templates-header">
+    <h1>Templates</h1>
+    <button class="btn-primary">+ New template</button>
+  </header>
+  <p class="subtitle">Pick a look, then build a document on top of it.</p>
+
+  @if (loading()) {
+    <p>Loading templates...</p>
+  } @else if (errorMsg()) {
+    <p class="error-msg">{{ errorMsg() }}</p>
+  } @else {
+    <section class="templates-grid">
+      @for (tpl of templates(); track tpl.id) {
+        <article class="template-card">
+          <span class="accent-strip" [style.background]="tpl.accent"></span>
+          <section class="card-body">
+            <header class="card-top">
+              <h2>{{ tpl.name }}</h2>
+              <button class="kebab-btn">⋮</button>
+            </header>
+            <span class="chip">{{ tpl.layout }}</span>
+
+           <figure class="mini-preview" [class.sidebar-layout]="tpl.layout === 'sidebar'">
+  @if (tpl.layout === 'sidebar') {
+                <span class="photo-circle" [style.background]="tpl.accent"></span>
+              }
+              <ul class="preview-lines">
+                <li class="line name-line" [style.background]="tpl.accent"></li>
+                <li class="line"></li>
+                <li class="line"></li>
+                <li class="line short"></li>
+              </ul>
+            </figure>
+
+            <button class="btn-use-template">Use this template</button>
+          </section>
+        </article>
+      }
+    </section>
+  }
+</main>
+<app-footer></app-footer>
